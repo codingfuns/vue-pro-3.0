@@ -1,0 +1,65 @@
+@import './image';
+$color-green-normal:#00d75b;
+$color-green-hover:#09cd93;
+$color-green-active: #0bbe89;
+$color-font-color:#3f3f3f;
+$color-error:#f80e50;
+$color-btnborder:#cccccc;
+
+
+@function image-attr($icon, $attr) {
+    $iconItem: map-get($image-icon-list, $icon);
+    @if $iconItem == null {
+        @warn "Can't find an icon with the name #{$icon}";
+    }
+    @return map-get($iconItem, $attr);
+}
+
+@function icon-attr($icon){
+    $attr:(
+        width:image-attr($icon, width),
+        height: image-attr($icon, height),
+        path: image-attr($icon,path)
+    );
+
+    @return $attr;
+}
+@mixin load-image($icon){
+    $iconMap: icon-attr($icon);
+    display: inline-block;
+    width: map-get($iconMap,width);
+    height: map-get($iconMap,height);
+    background-image: url(map-get($iconMap,path));
+}
+
+@mixin button-confirm($width,$height){
+    width: $width;
+    height: $height;
+    border: none;
+    outline: none;
+    color:#ffffff;
+    border-radius: 4px;
+    background: $color-green-normal;
+    &:hover{
+        background: $color-green-hover;
+    }
+    &:active{
+        background: $color-green-active;
+    }
+}
+
+@mixin button-cancel($width,$height){
+    width: $width;
+    height: $height;
+    outline: none;
+    border: solid 1px $color-btnborder;
+    border-radius: 4px;
+    color: $color-font-color;
+    &:hover{
+        border: solid 1px $color-green-hover;
+    }
+    &:active{
+        color: $color-green-normal;
+        border: solid 1px $color-green-active;
+    }
+}

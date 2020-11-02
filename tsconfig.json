@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve", //TypeScript附带三种JSX模式：preserve, react 和 react-native。 这些模式仅影响编译阶段 - 类型检查不受影响。 preserve模式将保持JSX作为输出的一部分，以便由另一个变换步骤（例如Babel）进一步编译。 此外，输出将具有.jsx文件扩展名。 react模式将编译React.createElement，在使用之前不需要经过JSX转换，输出将具有.js文件扩展名。 react-native模式相当于保留，因为它保留了所有JSX，但输出将具有.js文件扩展名。
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "allowJs":true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "./node_modules/vue/types"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/**/*.d.ts",
+    "tests/**/*.ts",
+    "tests/**/*.tsx", "src/main.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
